@@ -5,6 +5,40 @@
   --main-color: var(--el-color-primary);
   --el-color-white: white !important;
   --el-color-black: white !important;
+
+  // 自定义状态色（覆盖 Element Plus 默认值，包含完整色阶）
+  --el-color-success: #13deb9 !important;
+  --el-color-success-light-3: #5ae8ce !important;
+  --el-color-success-light-5: #89efdc !important;
+  --el-color-success-light-7: #b8f5ea !important;
+  --el-color-success-light-8: #d0f8f1 !important;
+  --el-color-success-light-9: #e9fcf8 !important;
+  --el-color-success-dark-2: #0fb294 !important;
+
+  --el-color-warning: #ffae1f !important;
+  --el-color-warning-light-3: #ffc662 !important;
+  --el-color-warning-light-5: #ffd78f !important;
+  --el-color-warning-light-7: #ffe7bc !important;
+  --el-color-warning-light-8: #ffefd2 !important;
+  --el-color-warning-light-9: #fff7e9 !important;
+  --el-color-warning-dark-2: #cc8b19 !important;
+
+  --el-color-danger: #ff4d4f !important;
+  --el-color-danger-light-3: #ff8284 !important;
+  --el-color-danger-light-5: #ffa6a7 !important;
+  --el-color-danger-light-7: #ffcaca !important;
+  --el-color-danger-light-8: #ffdbdc !important;
+  --el-color-danger-light-9: #ffedee !important;
+  --el-color-danger-dark-2: #cc3e3f !important;
+
+  --el-color-error: #fa896b !important;
+  --el-color-error-light-3: #fcac97 !important;
+  --el-color-error-light-5: #fdc4b5 !important;
+  --el-color-error-light-7: #fedcd3 !important;
+  --el-color-error-light-8: #fee7e1 !important;
+  --el-color-error-light-9: #fff3f0 !important;
+  --el-color-error-dark-2: #c86e56 !important;
+
   // 输入框边框颜色
   // --el-border-color: #E4E4E7 !important; // DCDFE6
   // 按钮粗度
@@ -40,6 +74,37 @@
 // el-card 背景色跟系统背景色保持一致
 html.dark .el-card {
   --el-card-bg-color: var(--default-box-color) !important;
+}
+
+// 暗色模式下重新计算状态色的 light 变量
+// 由于 :root 中通过 !important 覆盖了 Element Plus 默认值，暗色主题的覆盖会被忽略
+// 这里按 Element Plus 暗色主题规范（mix 基础色与黑色）重新计算，适配 el-tag--light 等组件
+// 注：相比 Element Plus 官方暗色比例（light-9=20%/light-8=30%），这里大幅提高基础色占比，
+// 让标签背景色在暗色下足够明显易辨识
+html.dark {
+  --el-color-success-light-3: mix(#13deb9, #000, 85%) !important;
+  --el-color-success-light-5: mix(#13deb9, #000, 75%) !important;
+  --el-color-success-light-7: mix(#13deb9, #000, 65%) !important;
+  --el-color-success-light-8: mix(#13deb9, #000, 60%) !important;
+  --el-color-success-light-9: mix(#13deb9, #000, 55%) !important;
+
+  --el-color-warning-light-3: mix(#ffae1f, #000, 85%) !important;
+  --el-color-warning-light-5: mix(#ffae1f, #000, 75%) !important;
+  --el-color-warning-light-7: mix(#ffae1f, #000, 65%) !important;
+  --el-color-warning-light-8: mix(#ffae1f, #000, 60%) !important;
+  --el-color-warning-light-9: mix(#ffae1f, #000, 55%) !important;
+
+  --el-color-danger-light-3: mix(#ff4d4f, #000, 85%) !important;
+  --el-color-danger-light-5: mix(#ff4d4f, #000, 75%) !important;
+  --el-color-danger-light-7: mix(#ff4d4f, #000, 65%) !important;
+  --el-color-danger-light-8: mix(#ff4d4f, #000, 60%) !important;
+  --el-color-danger-light-9: mix(#ff4d4f, #000, 55%) !important;
+
+  --el-color-error-light-3: mix(#fa896b, #000, 85%) !important;
+  --el-color-error-light-5: mix(#fa896b, #000, 75%) !important;
+  --el-color-error-light-7: mix(#fa896b, #000, 65%) !important;
+  --el-color-error-light-8: mix(#fa896b, #000, 60%) !important;
+  --el-color-error-light-9: mix(#fa896b, #000, 55%) !important;
 }
 
 // 修改 el-pagination 大小
@@ -245,7 +310,7 @@ html.dark .el-card {
 
 // 修改el-tag样式
 .el-tag {
-  font-weight: 500;
+  font-weight: 400;
   transition: all 0s !important;
 
   &.el-tag--default {

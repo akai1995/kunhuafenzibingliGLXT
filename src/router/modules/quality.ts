@@ -129,18 +129,179 @@ export const qualityRoutes: AppRouteRecord = {
                 icon: 'ri:file-list-2-line',
                 keepAlive: true
               }
+            },
+            {
+              path: 'lung3plus8',
+              name: 'Lung3plus8Qc',
+              component: '/quality/platform-qc',
+              meta: {
+                title: '肺癌3+8',
+                icon: 'ri:file-list-line',
+                keepAlive: true
+              }
+            },
+            {
+              path: 'braf',
+              name: 'BrafQc',
+              component: '/quality/platform-qc',
+              meta: {
+                title: 'BRAF',
+                icon: 'ri:file-list-line',
+                keepAlive: true
+              }
+            },
+            {
+              path: 'cd',
+              name: 'CdPcrQc',
+              component: '/quality/platform-qc',
+              meta: {
+                title: 'CD',
+                icon: 'ri:file-list-line',
+                keepAlive: true
+              }
+            },
+            {
+              path: 'cmv',
+              name: 'CmvQc',
+              component: '/quality/platform-qc',
+              meta: {
+                title: 'CMV',
+                icon: 'ri:file-list-line',
+                keepAlive: true
+              }
+            },
+            {
+              path: 'pcr-e6e7',
+              name: 'PcrE6e7Qc',
+              component: '/quality/platform-qc',
+              meta: {
+                title: 'E6E7',
+                icon: 'ri:file-list-line',
+                keepAlive: true
+              }
+            },
+            {
+              path: 'msi',
+              name: 'MsiQc',
+              component: '/quality/platform-qc',
+              meta: {
+                title: 'MSI',
+                icon: 'ri:file-list-line',
+                keepAlive: true
+              }
+            },
+            {
+              path: 'pik3ca',
+              name: 'Pik3caQc',
+              component: '/quality/platform-qc',
+              meta: {
+                title: 'PIK3CA',
+                icon: 'ri:file-list-line',
+                keepAlive: true
+              }
+            },
+            {
+              path: 'colon-knpb',
+              name: 'ColonKnpbQc',
+              component: '/quality/platform-qc',
+              meta: {
+                title: '肠癌KNPB',
+                icon: 'ri:file-list-line',
+                keepAlive: true
+              }
+            },
+            {
+              path: 'gene-rearrange-bt',
+              name: 'GeneRearrangeBtQc',
+              component: '/quality/platform-qc',
+              meta: {
+                title: '基因重排B+T',
+                icon: 'ri:file-list-line',
+                keepAlive: true
+              }
+            },
+            {
+              path: 'thyroid-multi-gene',
+              name: 'ThyroidMultiGeneQc',
+              component: '/quality/platform-qc',
+              meta: {
+                title: '甲癌多基因',
+                icon: 'ri:file-list-line',
+                keepAlive: true
+              }
+            },
+            {
+              path: 'thyroid-three-gene',
+              name: 'ThyroidThreeGeneQc',
+              component: '/quality/platform-qc',
+              meta: {
+                title: '甲癌三基因',
+                icon: 'ri:file-list-line',
+                keepAlive: true
+              }
+            },
+            {
+              path: 'tuberculosis',
+              name: 'TuberculosisQc',
+              component: '/quality/platform-qc',
+              meta: {
+                title: '结核',
+                icon: 'ri:file-list-line',
+                keepAlive: true
+              }
             }
           ]
         },
         {
           path: 'fish',
           name: 'FishQc',
-          component: '/quality/platform-qc',
           meta: {
             title: 'FISH质控',
             icon: 'ri:eye-line',
-            keepAlive: true
-          }
+            roles: ['R_SUPER', 'R_ADMIN']
+          },
+          children: [
+            {
+              path: 'her2',
+              name: 'Her2Qc',
+              component: '/quality/platform-qc',
+              meta: {
+                title: 'HER2',
+                icon: 'ri:file-list-line',
+                keepAlive: true
+              }
+            },
+            {
+              path: 'mdm2',
+              name: 'Mdm2Qc',
+              component: '/quality/platform-qc',
+              meta: {
+                title: 'MDM2',
+                icon: 'ri:file-list-line',
+                keepAlive: true
+              }
+            },
+            {
+              path: 'lymphoma',
+              name: 'LymphomaQc',
+              component: '/quality/platform-qc',
+              meta: {
+                title: '淋巴瘤',
+                icon: 'ri:file-list-line',
+                keepAlive: true
+              }
+            },
+            {
+              path: 'soft-tissue',
+              name: 'SoftTissueQc',
+              component: '/quality/platform-qc',
+              meta: {
+                title: '软组织',
+                icon: 'ri:file-list-line',
+                keepAlive: true
+              }
+            }
+          ]
         },
         {
           path: 'sanger',

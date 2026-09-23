@@ -2,7 +2,7 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import vueDevTools from 'vite-plugin-vue-devtools'
+// import vueDevTools from 'vite-plugin-vue-devtools'
 import viteCompression from 'vite-plugin-compression'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -32,7 +32,11 @@ export default ({ mode }: { mode: string }) => {
           changeOrigin: true
         }
       },
-      host: true
+      host: true,
+      // 预热：预转换所有视图文件，提前发现 Element Plus 依赖，避免运行时触发全页重载
+      warmup: {
+        clientFiles: ['./src/views/**/*.vue']
+      }
     },
     // 路径别名
     resolve: {
@@ -86,7 +90,7 @@ export default ({ mode }: { mode: string }) => {
       }),
       // 按需定制主题配置
       ElementPlus({
-        useSource: true
+        useSource: false
       }),
       // 压缩
       viteCompression({
@@ -96,8 +100,8 @@ export default ({ mode }: { mode: string }) => {
         ext: '.gz', // 压缩后的文件名后缀
         threshold: 10240, // 只有大小大于该值的资源会被处理 10240B = 10KB
         deleteOriginFile: false // 压缩后是否删除原文件
-      }),
-      vueDevTools()
+      })
+      // vueDevTools()
       // 打包分析
       // visualizer({
       //   open: true,
@@ -108,6 +112,8 @@ export default ({ mode }: { mode: string }) => {
     ],
     // 依赖预构建：避免运行时重复请求与转换，提升首次加载速度
     optimizeDeps: {
+      // 扫描所有源文件作为入口，发现懒加载路由组件的依赖
+      entries: ['src/**/*.vue', 'src/**/*.ts', 'src/**/*.tsx'],
       include: [
         'echarts/core',
         'echarts/charts',
@@ -118,9 +124,7 @@ export default ({ mode }: { mode: string }) => {
         'crypto-js',
         'file-saver',
         'vue-img-cutter',
-        'element-plus/es',
-        'element-plus/es/components/*/style/css',
-        'element-plus/es/components/*/style/index'
+        'element-plus/es'
       ]
     },
     css: {
@@ -128,7 +132,6 @@ export default ({ mode }: { mode: string }) => {
         // sass variable and mixin
         scss: {
           additionalData: `
-            @use "@styles/core/el-light.scss" as *; 
             @use "@styles/core/mixin.scss" as *;
           `
         }
